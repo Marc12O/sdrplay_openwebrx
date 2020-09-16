@@ -27,6 +27,7 @@ RUN apt-get update \
         git \
         build-essential \
         cmake \
+        dh-autoreconf \
         librtlsdr-dev \
         libfftw3-dev \
         libitpp-dev \
@@ -62,7 +63,7 @@ RUN cmake .. && make && make install
 WORKDIR /tmp
 RUN git clone https://github.com/jketterl/csdr.git ./csdr
 WORKDIR /tmp/csdr
-RUN make && make install PREFIX=/usr/local
+RUN autoreconf -i && ./configure && make && make install PREFIX=/usr/local
 WORKDIR /tmp
 RUN git clone https://github.com/szechyjs/mbelib.git ./mbelib
 WORKDIR /tmp/mbelib/build
