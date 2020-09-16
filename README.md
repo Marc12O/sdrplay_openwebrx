@@ -14,11 +14,7 @@ It works with compatible devices including:
 #### Example docker run
 
 ```
-docker run -d \
---restart unless-stopped \
---name='sdrplay_openwebrx' \
---device=/dev/bus/usb \
-f4fhh/sdrplay_openwebrx
+docker run -d -p 8073:8073 --restart unless-stopped --name='sdrplay_openwebrx' --device=/dev/bus/usb f4fhh/sdrplay_openwebrx
 ```
 ### HISTORY
  - Version 0.1.0: Initial build
